@@ -1,0 +1,147 @@
+<html>
+<style>
+.keypad {
+    display: table;
+    margin: 10px auto;
+    padding: 0;
+    width: 300px; /* not actually a static size, % in real use */
+}
+
+.keypad .key-row {
+    display: table-row;
+    width: 80%
+}
+
+.keypad .key-row .key-cell {
+    display: table-cell;
+    padding: 2px;
+    width: 20%;
+}
+
+.keypad .key-row .key-cell button.key {
+    font-size: medium;
+    font-weight: bold;
+    height: 70px;
+    width: 100%;
+}
+
+.keypad .key-row .key-cell button.key.tall-key {
+}
+
+.keypad .key-row .key-cell button.key.wide-key {
+}
+
+.keypad .key-row .key-cell button .key-alt-fn {
+    font-size: small;
+    font-weight: normal;
+}
+.inout {
+margin-left: 522px;
+}
+#input {
+width:36%;
+}
+
+#output {
+width:36%;
+}
+h2{
+margin-left: 545px
+}
+.area{
+border-style: inset;
+border-style: solid;
+border-width: 5px;
+}
+</style>
+<body>
+<div class="area">
+<h2><strong>Security Access System</strong></h2>
+     <div class="inout">   
+      <input type="password" id="input">
+	 </div>
+ <div class="keypad">
+    <div class="key-row">
+		<div class="key-cell">
+			<button id="1" onClick="enternum(this)" class="btn btn-default key" type="button" value="1">1</button>
+		</div>
+		<div class="key-cell">
+			<button id="2" onClick="enternum(this)" class="btn btn-default key" type="button" value="2">2</button>
+		</div>
+		<div class="key-cell">
+			<button id="3" onClick="enternum(this)" class="btn btn-default key" type="button" value="3">3</button>
+		</div>
+	</div>
+	<div class="key-row">
+		<div class="key-cell">
+			<button id="4" onClick="enternum(this)" class="btn btn-default key" type="button" value="4">4</button>
+		</div>
+		<div class="key-cell">
+			<button id="5" onClick="enternum(this)" class="btn btn-default key" type="button" value="5">5</button>
+		</div>
+		<div class="key-cell">
+			<button id="6" onClick="enternum(this)" class="btn btn-default key" type="button" value="6">6</button>
+		</div>
+	</div>
+	<div class="key-row">
+		<div class="key-cell">
+			<button id="7" onClick="enternum(this)" class="btn btn-default key" type="button" value="7">7</button>
+		</div>
+		<div class="key-cell">
+			<button id="8" onClick="enternum(this)" class="btn btn-default key" type="button" value="8">8</button>
+		</div>
+		<div class="key-cell">
+			<button id="9" onClick="enternum(this)" class="btn btn-default key" type="button" value="9">9</button>
+		</div>
+	</div>
+	<div class="key-row">
+		<div class="key-cell">
+			<button id="c" class="btn btn-default key" type="button">Clear</button>
+		</div>
+		<div class="key-cell">
+           <button id="0" onClick="enternum(this)" class="btn btn-default key" type="button" value="0">0</button>
+        </div>
+		<div class="key-cell">
+			<button id="enter" onClick="enter()" class="btn btn-default key tall-key" type="button">Enter</button>
+		</div>
+	</div>
+</div>
+    <div class="inout">
+    <textarea class="form-control" rows="5" id="output"></textarea>
+    </div>
+</br>
+</div>
+<script>
+function enternum(num) {
+document.getElementById('input').value = document.getElementById('input').value+num.value;
+}
+function enter(){
+var n = document.getElementById('input').value;
+if(n<1000)
+{ 
+document.getElementById("output").value = "Access Denied !!";
+}
+else if (n>=1645 && n<=1689) {
+document.getElementById("output").value = "Technical Personnel";
+}
+else if (n==999898 || n>=1000006 && n<=1000008) {
+document.getElementById("output").value = "Science Personnel";
+}
+else if(n==55875) {
+document.getElementById("output").value = "Special Services";
+}
+else if (n==8345) {
+document.getElementById("output").value = "Custodian Services";
+}
+else {
+document.getElementById("output").value = "Access Denied !!";
+}
+}
+document.getElementById('c').onclick = function() 
+{
+document.getElementById('input').value = "";
+document.getElementById('output').value = "";
+}
+</script>
+</body>
+</html>
